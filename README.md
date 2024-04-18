@@ -42,3 +42,16 @@ Once we have correctly identified the table above, we want to begin by collectin
         headers.append(header_text)  
     print("Extracted Headers:", headers)  
 ```
+
+Next, collect the remainder of the data and form the DataFrame using the headers as the column labels.
+
+```python
+    data = []
+    rows = table.find_all('tr')[1:]  
+    for row in rows:
+        cols = [td.get_text(strip=True) for td in row.find_all('td')]
+        data.append(cols)
+
+    df = pd.DataFrame(data, columns=headers)
+    print(df)
+```

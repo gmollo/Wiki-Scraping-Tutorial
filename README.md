@@ -32,7 +32,7 @@ By inspecting the html of the webpage, we are able to ascertain that there are t
     table = soup.find_all('table', {'class': ['wikitable']})[1]  
 ```
 
-Once we have correctly identified the table above, we want to begin by collecting the headers
+Once we have correctly identified the table above, we want to begin by collecting the headers. This can be done by choosing all elements from the 'tr' tagged element. 
 ```python
   headers = []
     header_row = table.find_all('tr')[0]
@@ -56,3 +56,4 @@ Next, collect the remainder of the data and form the DataFrame using the headers
     print(df)
 ```
 ![Screenshot of Output](./images/dataframe.png)
+As above, the dataframe displays properly! 

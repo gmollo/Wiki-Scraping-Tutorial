@@ -32,7 +32,7 @@ By inspecting the html of the webpage, we are able to ascertain that there are t
     table = soup.find_all('table', {'class': ['wikitable']})[1]  
 ```
 
-Once we have correctly identified the table above, we want to begin by collecting the headers. This can be done by choosing all elements from the 'tr' tagged element. 
+Once we have correctly identified the table above, we want to begin by collecting the headers. This can be done by choosing all elements from the first 'tr' tagged element (table row) to select all elements which are in the first row. These are ostensibly the column labels, and we can store them in a seperate list for further processesing as a seperate argument into a pandas array later. 
 ```python
   headers = []
     header_row = table.find_all('tr')[0]
@@ -43,7 +43,7 @@ Once we have correctly identified the table above, we want to begin by collectin
     print("Extracted Headers:", headers)  
 ```
 
-Next, collect the remainder of the data and form the DataFrame using the headers as the column labels.
+Next, collect the remainder of the data. This method exhausts the remainder of 'tr' elements in the html tree that are subsetted into the table, reading consecutive lists of data into a 2d list which comprises the data. 
 
 ```python
     data = []
@@ -56,4 +56,4 @@ Next, collect the remainder of the data and form the DataFrame using the headers
     print(df)
 ```
 ![Screenshot of Output](./images/dataframe.png)
-As above, the dataframe displays properly! 
+As above, the dataframe displays properly, and we can continue on to further analysis.

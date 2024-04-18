@@ -24,3 +24,21 @@ html = response.text
 print(html)
 ```
 ![Screenshot of Output](./images/print_output.png)
+At this time, we want to create a BeautifulSoup object, through which we will be able to filter, find, and collect the data, directly from the html. The second argument we pass to BeautifulSoup is a choice of parser, the one we have selectec 'html.parser' comes default in any python distro.
+By inspecting the html of the webpage, we are able to ascertain that there are two tables of class = wikitable, and that we desire the second. 
+
+```python
+    soup = BeautifulSoup(html, 'html.parser')
+    table = soup.find_all('table', {'class': ['wikitable']})[1]  
+```
+
+Once we have correctly identified the table above, we want to begin by collecting the headers
+```python
+  headers = []
+    header_row = table.find_all('tr')[0]
+    header_cells = header_row.find_all('th')
+    for th in header_cells:
+        header_text = th.get_text(strip=True)  
+        headers.append(header_text)  
+    print("Extracted Headers:", headers)  
+```

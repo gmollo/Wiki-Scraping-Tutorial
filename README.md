@@ -55,3 +55,4 @@ Next, collect the remainder of the data and form the DataFrame using the headers
     df = pd.DataFrame(data, columns=headers)
     print(df)
 ```
+![Screenshot of Output](./images/dataframe.png)
